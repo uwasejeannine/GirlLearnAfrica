@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: black;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #0d3358;
+            overflow: hidden;
+            text-align: right;
+            padding: 10px 0; 
+            margin: 0; 
+            width: 100%;
+            position: fixed; 
+            top: 0; /* Stick it to the top */
+            z-index: 1000; /* Set a higher z-index for the navbar */
+        }
+
+        .navbar-link {
+            display: inline-block;
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            border-bottom: none;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 70px; /* Add margin to create space below the navbar */
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="file"], /* Add support for file upload */
+        select,
+        textarea {
+            width: calc(100% - 16px); /* Adjusted width to account for padding */
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 30%; /* Set button width */
+            margin: 0 auto; /* Center the button */
+            background-color: #0d3358;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px; /* Adjusted padding for larger button */
+            border-radius: 5px; /* Added border radius */
+            font-size: 16px; /* Increase font size */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #084f8b;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="navbar-link">Home</a>
+        <a href="{% url 'course_list' %}" class="navbar-link">Educational Resources</a>
+        <a href="#" class="navbar-link">Community Engagement</a>
+        <a href="#" class="navbar-link">Feedback</a>
+    </nav>
+
+    <h1>Add Course</h1>
+    <!-- Add image upload input -->
+    <form method="post" enctype="multipart/form-data"> <!-- Include enctype for file upload -->
+        {% csrf_token %}
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <label for="duration">Duration:</label><br>
+        <input type="text" id="duration" name="duration"><br>
+        <label for="mentor">Mentor:</label><br>
+        <select id="mentor" name="mentor">
+            {% for mentor in mentors %}
+                <option value="{{ mentor.id }}">{{ mentor.first_name }} {{ mentor.last_name }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="image">Image:</label><br> <!-- Add label for image upload -->
+        <input type="file" id="image" name="image"><br> <!-- Add input for image upload -->
+        <button type="submit">Add Course</button>
+    </form>
+</body>
+</html>

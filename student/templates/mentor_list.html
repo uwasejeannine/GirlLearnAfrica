@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: black;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #0d3358;
+            overflow: hidden;
+            text-align: right;
+            padding: 10px 0; 
+            margin: 0; 
+            width: 100%;
+            position: fixed; 
+            top: 0; /* Stick it to the top */
+            z-index: 1000; /* Set a higher z-index for the navbar */
+        }
+
+        .navbar-link {
+            display: inline-block;
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            border-bottom: none;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 70px; /* Add margin to create space below the navbar */
+        }
+
+        table {
+            width: 80%;
+            margin: 50px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0d3358;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="navbar-link">Home</a>
+        <a href="{% url 'course_list' %}" class="navbar-link">Educational Resources</a>
+        <a href="#" class="navbar-link">Community Engagement</a>
+        <a href="#" class="navbar-link">Feedback</a>
+    </nav>
+
+    <h1>Mentor List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Program Interested In</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mentor in mentors %}
+            <tr>
+                <td>{{ mentor.first_name }}</td>
+                <td>{{ mentor.last_name }}</td>
+                <td>{{ mentor.phone_number }}</td>
+                <td>{{ mentor.email }}</td>
+                <td>{{ mentor.program_interested_in }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

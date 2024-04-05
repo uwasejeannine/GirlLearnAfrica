@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+    <style>
+           body {
+            font-family: Arial, sans-serif;
+            color: black;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .navbar {
+            background-color: #0d3358;
+            overflow: hidden;
+            text-align: right;
+            padding: 10px 0; 
+            margin: 0; 
+            width: 100%;
+            position: fixed; 
+            top: 0; /* Stick it to the top */
+            z-index: 1000; /* Set a higher z-index for the navbar */
+        }
+
+        .navbar-link {
+            display: inline-block;
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            border-bottom: none;
+        }
+
+        h1 {
+            color: #0d3358;
+            text-align: center;
+            margin-top: 70px; /* Add margin to create space below the navbar */
+
+        }
+        .table {
+            border-collapse: collapse;
+            margin: 25px auto;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            width: 80%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        th {
+            background-color: #0d3358;
+            color: white;
+            text-align: center;
+            padding: 12px 15px;
+        }
+        td {
+            padding: 10px 15px;
+            text-align: center;
+        }
+        tbody {
+            border-bottom: 1px solid #dddddd;
+        }
+        tbody:last-of-type {
+            border-bottom: 2px solid #0d3358;
+        }
+        img {
+            width: 90px;
+            height: auto;
+        }
+        a {
+            text-decoration: none;
+            color: #0d3358;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="navbar-link">Home</a>
+        <a href="{% url 'course_list' %}" class="navbar-link">Educational Resources</a>
+        <a href="" class="navbar-link">Community Engagement</a>
+        <a href="" class="navbar-link">Feedback</a>
+        <select name="dog-names" id="dog-names">
+            <option value="rigatoni">Register as </option> 
+            <option value="dave">Dave</option> 
+            <option value="pumpernickel">Pumpernickel</option> 
+            <option value="reeses">Reeses</option> 
+        </select>
+      
+    
+        <a href="" class="navbar-link profile-link">
+            <i class="fas fa-user-circle"></i> 
+        </a>
+    </nav>
+    <h1>Student Registration List</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Level of Studies</th>
+                <th>Program Interested In</th>
+                <th>Courses</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.first_name }}</td>
+                <td>{{ student.last_name }}</td>
+                <td>{{ student.phone_number }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.level_of_studies }}</td>
+                <td>{{ student.program_interested_in}}</td>
+                <td>{{ student.courses }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

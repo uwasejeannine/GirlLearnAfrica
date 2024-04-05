@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  GirlLearnAfrica Initiative</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            min-height: 100vh; /* Ensure full height of the viewport */
+        }
+
+        h2 {
+            text-align: center;
+            color: #054D6F;
+            margin-bottom: 10px; /* Reduced margin */
+        }
+
+        form {
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* Reduced width */
+            width: 90%; /* Set to 90% of parent width */
+            margin: 0 auto; /* Center horizontally */
+        }
+
+        label {
+            margin-bottom: 4px; /* Reduced margin */
+            font-weight: bold;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            padding: 6px; /* Reduced padding */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px; /* Reduced margin */
+            width: calc(100% - 18px);
+        }
+
+        button {
+            background-color: #054D6F;
+            color: white;
+            padding: 8px 10px; /* Reduced padding */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 8px; /* Reduced margin */
+            color: #054D6F; /* Set text color to match button */
+            text-decoration: none;
+        }
+
+        a {
+            color: 078ECE; /* Set link color to match button */
+            text-decoration: none; /* Remove underline */
+        }
+    </style>
+</head>
+<body>
+<form method="post">
+    <h2>SignUp to GirlLearnAfrica Initiative</h2>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">SignUp</button>
+    <p>You already have an account? <a href="{% url 'login' %}">Log In</a></p>
+</form>
+</body>
+</html>

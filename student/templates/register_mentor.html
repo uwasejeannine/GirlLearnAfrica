@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Mentor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: black;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #0d3358;
+            overflow: hidden;
+            text-align: right;
+            padding: 10px 0; 
+            margin: 0; 
+            width: 100%;
+            position: fixed; /* Position the navbar fixed */
+            top: 0; /* Stick it to the top */
+            z-index: 1000; /* Set a higher z-index for the navbar */
+        }
+
+        .navbar-link {
+            display: inline-block;
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            border-bottom: none;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 70px; /* Add margin to create space below the navbar */
+
+        }
+
+        form {
+            width: 50%;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #0d3358;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0a2a4d;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="navbar-link">Home</a>
+        <a href="{% url 'course_list' %}" class="navbar-link">Educational Resources</a>
+        <a href="#" class="navbar-link">Community Engagement</a>
+        <a href="#" class="navbar-link">Feedback</a>
+        
+    </nav>
+
+    <h1>Register As A Mentor</h1>
+    <form action="{% url 'register_mentor' %}" method="post">
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name">
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name">
+        <label for="phone_number">Phone number:</label>
+        <input type="tel" id="phone_number" name="phone_number">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <label for="program_interested_in">Program interested in:</label>
+        <input type="text" id="program_interested_in" name="program_interested_in">
+        <input type="submit" value="Register Mentor">
+    </form>
+</body>
+</html>

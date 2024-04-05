@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    color: black;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+}
+
+.navbar {
+    background-color: #0d3358;
+    overflow: hidden;
+    text-align: right;
+    padding: 10px 0; 
+    margin: 0; 
+    width: 100%;
+    position: fixed;
+    top: 0; 
+    z-index: 1000; 
+}
+
+.container {
+    background-color: white;
+    width: 600px;
+    padding: 50px;
+    font-size: 20px;
+    border-radius: 30px;
+    z-index: 999; /* Set a lower z-index for the form */
+}
+
+
+.navbar-link,
+.profile-link {
+    display: inline-block;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-bottom: none;
+}
+.profile-link {
+    border-radius: 50%; 
+}
+
+.profile-link i {
+    margin-right: 5px; 
+    font-size: 24px;
+}
+
+        .head {
+            color: #078ECE;
+            font-size: 25px;
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 40px;
+        }
+
+
+        input {
+            width: 100%;
+            outline: none;
+            border: 1px solid;
+            font-size: 15px;
+            padding: 8px 10px;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        img {
+            margin-left: 10%;
+        }
+
+        .button {
+            width: 20%;
+            height: 30%;
+            margin-left: 45%;
+            border: 5px solid #078ECE;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="navbar-link">Home</a>
+        <a href="{% url 'course_list' %}" class="navbar-link">Educational Resources</a>
+        <a href="" class="navbar-link">Community Engagement</a>
+        <a href="" class="navbar-link">Feedback</a>
+        <select name="dog-names" id="dog-names">
+            <option value="rigatoni">Register as </option> 
+            <option value="dave">Dave</option> 
+            <option value="pumpernickel">Pumpernickel</option> 
+            <option value="reeses">Reeses</option> 
+        </select>
+      
+    
+        <a href="" class="navbar-link profile-link">
+            <i class="fas fa-user-circle"></i> 
+        </a>
+    </nav>
+<div class="container">
+    <div class="head">Student Registration Form</div>
+    <form action="{% url 'register_student' %}" method="post"> <!-- Update the action attribute with the URL of the view that handles form submission -->
+        {% csrf_token %}
+        <label for="first_name">First Name:</label><br>
+        <input type="text" id="first_name" name="first_name"><br><br>
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" id="last_name" name="last_name"><br><br>
+        <label for="phone_number">Phone number:</label><br>
+        <input type="tel" id="phone_number" name="phone_number"><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="level_of_studies">Level of studies:</label><br>
+        <input type="text" id="level_of_studies" name="level_of_studies"><br><br>
+        <label for="program_interested_in">Program interested in:</label><br>
+        <input type="text" id="program_interested_in" name="program_interested_in"><br><br>
+        <label for="courses">Courses:</label><br>
+        <select id="courses" name="courses" multiple>
+            {% for course in courses %}
+            <option value="{{ course.id }}">{{ course.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        <input class="button" type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h2 {
+            text-align: center;
+            color: #054D6F;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: white;
+            border: 1px solid #054D6F;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            display: block;
+        }
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            width: calc(80% - 18px);
+        }
+        button {
+            background-color: #054D6F;
+            color: white;
+            margin-left: 40px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 80%;
+        }
+   
+        p {
+            text-align: center;
+            margin-top: 10px;
+            color: #054D6F;
+        }
+        a {
+            color: #054D6F;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <h2>Login</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a href="{% url 'signup' %}">Signup</a></p>
+    </form>
+</body>
+</html>
